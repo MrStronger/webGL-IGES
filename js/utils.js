@@ -1,12 +1,12 @@
 function loadShaderFromFile(filename, onLoadShader) {
-  var request = new XMLHttpRequest();
-  request.onreadystatechange = function () {
-      if(request.readyState === 4 && request.status >= 200 && request.status <=300) {
-          onLoadShader(request.responseText);
-      } else {
-          throw TypeError('load shader file failed' + request.status)
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function () {
+      if(xhr.readyState === 4 && xhr.status >= 200 && xhr.status <=300) {
+          onLoadShader(xhr.responseText);
+      } else if (xhr.readyState === 4) {
+          console.error('load shader file failed: %d', xhr.statusText)
       }
   };
-  request.open("GET", filename, true);
-  request.send();
+  xhr.open("GET", filename, true);
+  xhr.send();
 }
