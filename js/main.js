@@ -2,18 +2,16 @@
 var canvas = document.getElementById('canvas')
 var gl = canvas.getContext('webgl')
 
-
-var vsFile = 'glsl/point.vert'
-var fsFile = 'glsl/point.frag'
-
-initShader(gl, vsFile, fsFile, (glProgram) => {
+initShader(gl, 'glsl/point.vert', 'glsl/point.frag', (glProgram) => {
 
   var a_Position = gl.getAttribLocation(glProgram, 'a_Position');
   gl.clearColor(1.0, 0.5, 0.5, 1.0)
   gl.clear(gl.COLOR_BUFFER_BIT)
   gl.vertexAttrib3f(a_Position, 0.0, 0.0, 0.0)
   gl.drawArrays(gl.POINTS, 0, 1);
-  canvas.onclick = (ev) => onCanvasClick(ev, gl, canvas, a_Position)
+
+  var points = [[0.0, 0.0]]
+  canvas.onclick = (ev) => onCanvasClick(ev, gl, canvas, a_Position, points)
 })
 
 function initShader(gl, vsFile, fsFile, cb){
@@ -49,13 +47,17 @@ function initShader(gl, vsFile, fsFile, cb){
   var glProgram = gl.createProgram()
 }
 
-function onCanvasClick(ev, gl, canvas, a_Position) {
+function onCanvasClick(ev, gl, canvas, a_Position, points) {
   var x = ev.clientX, y = ev.clientY, canvasRect = canvas.getBoundingClientRect()
 
   x =(x - canvasRect.left - canvas.width/2) / (canvas.width/2)
   y = (canvas.height/2 - (y - canvasRect.top)) / (canvas.height/2)
-
+  points.push([x,y])
   gl.clear(gl.COLOR_BUFFER_BIT)
-  gl.vertexAttrib3f(a_Position, x, y, 0.0)
-  gl.drawArrays(gl.POINTS, 0, 1);
+
+  for(let i = 0; i < points.length; i++) {
+    gl.vertexAttrib3f(a_Position, points[i][0], points[i][1], 0.0)
+    gl.drawArrays(gl.POINTS, 0, 1);
+  }
+  
 }
