@@ -2,12 +2,15 @@
 var DrawPointOnClick = require('./drawPointOnClick')
 var UseBuffer = require('./createBuffer')
 var Transform = require('./transform')
+var MultiBuffer = require('./multiBuffer')
+var Texture = require('./texture')
+var ChangeView = require('./changeView')
 
 var canvas = document.getElementById('canvas')
 var gl = canvas.getContext('webgl')
-gl.clearColor(1.0, 0.5, 0.5, 1.0)
+gl.clearColor(0.0, 0.0, 0.0, 1.0)
 
-initShader(gl, 'glsl/point.vert', 'glsl/point.frag', Transform)
+initShader(gl, 'glsl/changeView.vert', 'glsl/changeView.frag', ChangeView)
 
 function initShader(gl, vsFile, fsFile, cb){
   var vs_source = null, fs_source = null, vertexShader = null, fragmentShader = null
