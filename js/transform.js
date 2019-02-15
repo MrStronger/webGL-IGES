@@ -22,14 +22,13 @@ function transform(gl) {
 
   gl.drawArrays(gl.TRIANGLES, 0, 3)
 
-  function frame() {
-    transformMat.rotate(1, 0, 0, 1)
-    gl.uniformMatrix4fv(u_Transform, false, transformMat.elements)
-    gl.clear(gl.COLOR_BUFFER_BIT)
-    gl.drawArrays(gl.TRIANGLES, 0, 3)
-    window.requestAnimationFrame(frame)
-  }
-  frame()
+  transformMat.rotate(10, 0, 0, 1)
+  gl.uniformMatrix4fv(u_Transform, false, transformMat.elements)
+  gl.drawArrays(gl.TRIANGLES, 0, 3)
+
+  transformMat.rotate(10, 0, 0, 1)
+  gl.uniformMatrix4fv(u_Transform, false, transformMat.elements)
+  gl.drawArrays(gl.TRIANGLES, 0, 3)
 
 }
 

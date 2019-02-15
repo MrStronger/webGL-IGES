@@ -5,12 +5,15 @@ var Transform = require('./transform')
 var MultiBuffer = require('./multiBuffer')
 var Texture = require('./texture')
 var ChangeView = require('./changeView')
+var Cube = require('./cube')
 
 var canvas = document.getElementById('canvas')
 var gl = canvas.getContext('webgl')
 gl.clearColor(0.0, 0.0, 0.0, 1.0)
+gl.enable(gl.DEPTH_TEST)
 
-initShader(gl, 'glsl/changeView.vert', 'glsl/changeView.frag', ChangeView)
+
+initShader(gl, 'glsl/changeView.vert', 'glsl/changeView.frag', Cube)
 
 function initShader(gl, vsFile, fsFile, cb){
   var vs_source = null, fs_source = null, vertexShader = null, fragmentShader = null
