@@ -7,6 +7,7 @@ var Texture = require('./texture')
 var ChangeView = require('./changeView')
 var Cube = require('./cube')
 var Lighting = require('./lighting')
+var RobotArm = require('./robotArm')
 
 var canvas = document.getElementById('canvas')
 var gl = canvas.getContext('webgl')
@@ -14,7 +15,7 @@ gl.clearColor(0.0, 0.0, 0.0, 0.9)
 gl.enable(gl.DEPTH_TEST)
 
 
-initShader(gl, 'glsl/lighting.vert', 'glsl/lighting.frag', Lighting)
+initShader(gl, 'glsl/robotArm.vert', 'glsl/robotArm.frag', RobotArm)
 
 function initShader(gl, vsFile, fsFile, cb){
   var vs_source = null, fs_source = null, vertexShader = null, fragmentShader = null
