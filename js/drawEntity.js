@@ -1,5 +1,5 @@
 function drawCircularArc(entity) {
-  
+
 }
 function drawCompositeCurve(entity) {
 
@@ -8,7 +8,8 @@ function drawPlane(entity) {
 
 }
 function drawLine(entity) {
-
+  var entityParams = entity.params
+  var entityAttr = entity.attr
 }
 function drawRevolutionSurface(entity) {
 
