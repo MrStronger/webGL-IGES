@@ -42,8 +42,8 @@ function lighting(gl) {
       case 40: g_angle2 >  135 ? null: g_angle2 += 5;break;
       case 65: g_angle3 -= 5;break;
       case 68: g_angle3 += 5;break;
-      case 87: g_angle4 > 20 ? null: g_angle4 += 10;break;
-      case 83: g_angle4 < -45 ? null: g_angle4 -= 10;break;
+      case 87: g_angle4 > 20 ? null: g_angle4 += 20;break;
+      case 83: g_angle4 < -45 ? null: g_angle4 -= 20;break;
       default: break;
     }
     draw()

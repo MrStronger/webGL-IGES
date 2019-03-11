@@ -10,7 +10,22 @@
   
 </head>
 <body>
-  <canvas id="canvas" width="800" height="800"></canvas>
+  <div id="container">
+      <header>
+        <h1>基于WebGL的IGES文件查看器</h1>
+        <div><span id='fileMsg'></span></div>
+        <div id='openContainer'>
+            <input type="file" id="file" style="display:none"/>
+            <button id='openBtn'>打开文件</button>
+        </div>
+      </header>
+      <div id='canvasContainer'>
+          <canvas id="canvas"></canvas>
+      </div>
+      <footer>
+        作者: 陶成国 &emsp;&emsp;指导教师: 万波
+      </footer>
+  </div>
   <script src="./lib/require_polyfill.js" data-main="./js/main.js" data-project-root="./"></script>
 </body>
 
